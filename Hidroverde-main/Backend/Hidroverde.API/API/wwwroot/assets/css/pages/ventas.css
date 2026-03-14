@@ -1,0 +1,22 @@
+/* ventas.css — usa el sistema global de app.css */
+
+/* Pill de estado dinámico con color personalizado (via style inline) */
+.estado-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 11px;
+    border: 1px solid;
+    white-space: nowrap;
+}
+
+/* Input compacto en tabla de detalle */
+.input-sm {
+    width: 100%;
+    padding: 6px 8px !important;
+    border-radius: 8px !important;
+    font-size: 12px;
+    border: 1px solid var(--line) !important;
+}

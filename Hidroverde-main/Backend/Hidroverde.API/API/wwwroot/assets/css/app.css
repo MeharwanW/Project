@@ -1,0 +1,352 @@
+﻿/* =========================================================
+   1) Variables / Base
+   ========================================================= */
+:root {
+    /* Light theme */
+    --bg: #f6f7fb;
+    --panel: #ffffff;
+    --panel2: #ffffff;
+    --text: #0f172a;
+    --muted: #64748b;
+    --line: rgba(15,23,42,.10);
+    /* Acento verde (Lovable vibe) */
+    --primary: #16a34a;
+    --primary-bg: rgba(34,197,94,.14);
+    --primary-border: rgba(34,197,94,.35);
+    --danger: #dc2626;
+    --radius: 14px;
+    --shadow: 0 12px 30px rgba(2,6,23,.10);
+    --shadow2: 0 2px 12px rgba(2,6,23,.08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* Títulos: solo quitar margen por defecto */
+h2, h3 {
+    margin: 0;
+}
+
+/* =========================================================
+   2) Layout (sidebar / main / topbar / view)
+   ========================================================= */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 260px;
+    background: #0f2a1f; /* verde oscuro */
+    border-right: 1px solid rgba(255,255,255,.10);
+    padding: 16px 14px;
+    overflow: auto; /* evita que se aplaste */
+}
+
+.main {
+    margin-left: 260px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ✅ era "topbar" sin punto */
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: rgba(255,255,255,.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--shadow2);
+}
+
+#topTitle {
+    font-weight: 900;
+    letter-spacing: .2px;
+}
+
+#env {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.view {
+    padding: 18px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto; /* centra el contenido */
+}
+
+/* =========================================================
+   3) Sidebar (brand / nav)
+   ========================================================= */
+.brand {
+    font-weight: 900;
+    letter-spacing: .8px;
+    padding: 10px 10px;
+    border-radius: 12px;
+    color: #eafff2;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.12);
+}
+
+.nav {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+    .nav button {
+        width: 100%;
+        border: 1px solid transparent;
+        background: transparent;
+        color: rgba(234,255,242,.92);
+        padding: 10px 12px;
+        border-radius: 12px;
+        cursor: pointer;
+        font-weight: 800;
+        text-align: left;
+    }
+
+        .nav button:hover {
+            background: rgba(255,255,255,.10);
+            border-color: rgba(255,255,255,.10);
+        }
+
+        .nav button.active {
+            background: rgba(34,197,94,.18);
+            border-color: rgba(34,197,94,.55);
+        }
+
+.link {
+    margin-top: 6px;
+    display: block;
+    color: #bbf7d0;
+    text-decoration: none;
+    font-weight: 900;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,.12);
+    background: rgba(255,255,255,.06);
+}
+
+    .link:hover {
+        filter: brightness(1.05);
+    }
+
+/* =========================================================
+   4) Componentes comunes (card / botones / utilidades)
+   ========================================================= */
+/* ✅ era "..card" */
+.card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 14px;
+    box-shadow: var(--shadow2);
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+.right {
+    margin-left: auto;
+}
+
+.danger {
+    color: var(--danger);
+}
+
+.btn {
+    border: 1px solid var(--line);
+    background: rgba(2,6,23,.03);
+    color: var(--text);
+    padding: 10px 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 900;
+}
+
+    .btn:hover {
+        filter: brightness(1.02);
+    }
+
+.btn-primary {
+    background: var(--primary-bg);
+    border-color: var(--primary-border);
+}
+
+.btn.danger {
+    background: rgba(220,38,38,.10);
+    border-color: rgba(220,38,38,.30);
+    color: #7f1d1d;
+}
+
+/* =========================================================
+   5) Formularios (inputs + grid2)
+   ========================================================= */
+/* ✅ era "iinput" */
+input, textarea, select {
+    border: 1px solid var(--line);
+    background: #fff;
+    color: var(--text);
+    padding: 10px 12px;
+    border-radius: 12px;
+    outline: none;
+}
+
+    input:focus, textarea:focus, select:focus {
+        border-color: rgba(34,197,94,.55);
+        box-shadow: 0 0 0 3px rgba(34,197,94,.16);
+    }
+
+.grid2 {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 10px;
+}
+
+    .grid2 label {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        font-size: 12px;
+        color: var(--muted);
+        font-weight: 800;
+    }
+
+/* =========================================================
+   6) Tablas (fallback + class .table)
+   ========================================================= */
+
+/* Fallback para tablas sin class */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-top: 10px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+}
+
+thead th {
+    text-align: left;
+    font-size: 12px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: #475569;
+    background: rgba(2,6,23,.03);
+    border-bottom: 1px solid var(--line);
+}
+
+th, td {
+    padding: 10px 10px;
+    border-bottom: 1px solid var(--line);
+    font-size: 13px;
+}
+
+tbody tr:hover td {
+    background: rgba(2,6,23,.02);
+}
+
+/* Versión recomendada: class="table" (mismo look, más control) */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-top: 10px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+}
+
+    .table thead th {
+        text-align: left;
+        font-size: 12px;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+        color: #475569; /* ✅ antes estaba dark */
+        background: rgba(2,6,23,.03); /* ✅ antes estaba dark */
+        border-bottom: 1px solid var(--line);
+    }
+
+    .table th, .table td {
+        padding: 10px 10px;
+        border-bottom: 1px solid var(--line);
+        font-size: 13px;
+    }
+
+    .table tbody tr:hover td {
+        background: rgba(2,6,23,.02);
+    }
+
+/* =========================================================
+   7) Modal (genérico)
+   ========================================================= */
+.modal[hidden] {
+    display: none;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.55);
+    display: grid;
+    place-items: center;
+    z-index: 20;
+    padding: 18px;
+}
+
+.modalCard {
+    width: min(820px, 96vw);
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 14px;
+    box-shadow: var(--shadow);
+}
+
+/* =========================================================
+   8) Responsive
+   ========================================================= */
+@media (max-width:900px) {
+    .sidebar {
+        position: static;
+        width: auto;
+    }
+
+    .main {
+        margin-left: 0;
+    }
+
+    .grid2 {
+        grid-template-columns: 1fr;
+    }
+}
