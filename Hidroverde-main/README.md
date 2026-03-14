@@ -1,2 +1,0 @@
-# Hidroverde
-Proyecto Web Hidroverde
